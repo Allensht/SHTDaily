@@ -1,34 +1,29 @@
 import { defineConfig } from '@umijs/max';
 
 export default defineConfig({
-  antd: {},
-  access: {},
-  model: {},
-  initialState: {},
-  request: {},
-  layout: {
-    title: '@umijs/max',
+  locale: {
+    default: 'zh-CN',
+    baseSeparator: '-',
   },
+  publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   routes: [
     {
-      path: '/',
-      redirect: '/home',
+      path: "/",
+      redirect: "/home"
     },
     {
-      name: '首页',
-      path: '/home',
-      component: './Home',
+      path: "/home",
+      component: "@/pages/home",
     },
     {
-      name: '权限演示',
-      path: '/access',
-      component: './Access',
+      path: "/weather",
+      component: "@/pages/weather",
     },
     {
-      name: ' CRUD 示例',
-      path: '/table',
-      component: './Table',
-    },
+      path: "/news",
+      component: "@/pages/news",
+    }
   ],
+  history: {type: 'hash'},
   npmClient: 'cnpm',
 });

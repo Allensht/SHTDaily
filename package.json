@@ -1,26 +1,66 @@
 {
   "private": true,
   "author": "Allensht <swhatw442@qq.com>",
+  "version": "0.1.0",
+  "name": "SHTDaily",
   "main": "./main/index.js",
   "scripts": {
     "build": "max build",
     "dev": "max dev",
     "postinstall": "max setup",
     "setup": "max setup",
-    "start": "concurrently \"npm run dev\" \"wait-on http://localhost:8000 && electron .\""
+    "start": "concurrently \"npm run dev\" \"wait-on http://localhost:8000 && electron .\"",
+    "build-win64": "npm run build && electron-builder --win --x64"
+  },
+  "build": {
+    "productName":"SHTDaily",
+    "appId": "com.allensht.shtdaily",
+    "copyright":"Copyright © 2024 Allensht",
+    "directories": {
+      "output": "build"
+    },
+    "win": {  
+      "icon": "./src/assets/icons/win/logo.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": "x64"
+        }
+      ]
+    },
+    "files": [
+      "dist/**/*",
+      "main/**/*"
+    ],
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./src/assets/icons/win/logo.ico",
+      "uninstallerIcon": "./src/assets/icons/win/logo.ico",
+      "installerHeaderIcon": "./src/assets/icons/win/logo.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "SHTDaily"
+    }
   },
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
     "@ant-design/pro-components": "^2.4.4",
     "@umijs/max": "^4.3.10",
     "antd": "^5.4.0",
-    "electron": "^31.3.0"
+    "axios": "^1.7.2",
+    "mac-scrollbar": "^0.13.6",
+    "qweather-icons": "^1.6.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
     "concurrently": "^8.2.2",
+    "electron-builder": "^24.13.3",
+    "electron-icon-builder": "^2.0.1",
     "typescript": "^5.0.3",
+    "electron": "^31.3.0",
     "wait-on": "^7.2.0"
   }
 }
