@@ -1,10 +1,9 @@
-import { GithubFilled, InfoCircleFilled, QuestionCircleFilled, DownOutlined, UserOutlined, SunOutlined, MoonFilled, TranslationOutlined } from '@ant-design/icons';
+import { GithubFilled, InfoCircleFilled, QuestionCircleFilled} from '@ant-design/icons';
 import { PageContainer, ProLayout } from '@ant-design/pro-components';
 import avatarSvg from '@/assets/avatar.svg';
 import bgLogo from '@/assets/bgLogo.png';
 import pageConfig from './pageConfig';
 import bg from '@/assets/bg.png';
-import bgDark from '@/assets/bgDark.png';
 import { Outlet, history, setLocale } from '@umijs/max';
 import { useEffect, useState } from 'react';
 import 'mac-scrollbar/dist/mac-scrollbar.css';
@@ -114,6 +113,8 @@ export default () => {
         "colorInfo": "#4096ff"
       }
     };
+    const antdToken = theme.getDesignToken(config)
+
     const ImageLimit = ({ src, width, height }) => {
       return (
         <div style={{ width: width, height: height }}>
@@ -122,26 +123,17 @@ export default () => {
       )
     }
 
-    const bgImg = () => {
-      if (darktheme) {
-        return bgDark
-      } else {
-        return bg
-      }
-    }
+    const bgStyle = {background: `radial-gradient(circle at 100%,#121212, #121212 50%, #eee 75%, #121212 75%)`, height: '100vh', width: '100vw'}
 
-    const antdToken = theme.getDesignToken(config)
     return (
       <div
         id="pro-layout"
-        style={{
-          height: '100vh',
-        }}
       >
         <ConfigProvider
           theme={config}
         >
           <ProLayout
+            contentStyle={darktheme ? bgStyle : {}}
             title="SHTDaily"
             logo={<ImageLimit src={bgLogo} width={100} height={100} />}
             siderWidth={216}
@@ -156,15 +148,15 @@ export default () => {
               },
               pageContainer: {
                 paddingInlinePageContainerContent: 0
-              }
+              },
             }}
-            bgLayoutImgList={[
-              {
-                src: bgImg(),
-                width: '100%',
-                height: '100%',
-              }
-            ]}
+            // bgLayoutImgList={[
+            //   { 
+            //     src: bg,
+            //     width: '100%',
+            //     height: '100%',
+            //   }
+            // ]}
             location={{ pathname }}
             {...pageConfig}
             avatarProps={{
@@ -200,7 +192,6 @@ export default () => {
               breadcrumbRender={() => {
                 return (
                   <>
-                      
                       <div className='headerTool'>
                         <Row gutter={16}>
                           <Col className="gutter-row" span={4}>
@@ -215,7 +206,7 @@ export default () => {
                           </Col>
                         </Row>
                       </div>
-                      <Divider style={{ marginTop: 0, padding: 0 }}>{ enUS ? 'SHTDaily | Your Daily Assistant' : 'SHTDaily | 你的日常助手'}</Divider>
+                      <Divider style={{ marginTop: 15, padding: 0 }}></Divider>
                       <Burger />
                   </>
                 )

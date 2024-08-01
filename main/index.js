@@ -22,7 +22,7 @@ function createWindow() {
     icon: appIcon,
     titleBarStyle: 'hidden',
     titleBarOverlay: {
-        height: 48,
+        height: 60,
         color: '#ffffff00',
         symbolColor: '#000'
     },

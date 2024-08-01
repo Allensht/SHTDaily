@@ -13,13 +13,13 @@
     "build-win64": "npm run build && electron-builder --win --x64"
   },
   "build": {
-    "productName":"SHTDaily",
+    "productName": "SHTDaily",
     "appId": "com.allensht.shtdaily",
-    "copyright":"Copyright © 2024 Allensht",
+    "copyright": "Copyright © 2024 Allensht",
     "directories": {
       "output": "build"
     },
-    "win": {  
+    "win": {
       "icon": "./icons/win/icon.ico",
       "target": [
         {
@@ -48,10 +48,12 @@
     "@ant-design/icons": "^5.0.1",
     "@ant-design/pro-components": "^2.4.4",
     "@umijs/max": "^4.3.10",
+    "ahooks": "^3.8.0",
     "antd": "^5.4.0",
     "axios": "^1.7.2",
     "mac-scrollbar": "^0.13.6",
-    "qweather-icons": "^1.6.0"
+    "qweather-icons": "^1.6.0",
+    "react-typewriter-hook": "^1.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.33",
