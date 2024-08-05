@@ -1,8 +1,23 @@
 {
-  "welcome": "Welcome to Umi's world!",
   "home": "Home",
   "weather": "Weather",
   "news": "News",
   "light": "Light",
-  "dark": "Dark"
+  "dark": "Dark",
+  "min": "Daily Briefing",
+  "weibo": "Weibo Hot List",
+  "toutiao": "Toutiao Hot List",
+  "zhihu": "Zhihu Hot List",
+  "douyin": "Douyin Hot List",
+  "bili": "Bilibili Hot List",
+  "magicName": "Your daily assistant",
+  "copy": "This page has been copied into the clipboard",
+  "share": "Share Page",
+  "loading": "Loading...",
+  "error": "Loading failed, please try again later",
+  "reload": "Reload",
+  "notice1": "All data in this page comes from official reports to ensure stability and real-time performance",
+  "notice2": "This software does not participate in the writing process and will not rewrite the data",
+  "settings": "Settings",
+  "language": "Language :"
 }

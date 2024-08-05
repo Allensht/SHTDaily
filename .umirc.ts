@@ -21,7 +21,34 @@ export default defineConfig({
     },
     {
       path: "/news",
-      component: "@/pages/news",
+      component: '@/layouts/index',
+      layout: false,
+      routes: [
+        {
+          path: '/news/min',
+          component: "@/pages/news/index",
+        },
+        {
+          path: '/news/weibo',
+          component: "@/pages/news/weibo",
+        },
+        {
+          path: '/news/toutiao',
+          component: "@/pages/news/toutiao",
+        },
+        {
+          path: '/news/zhihu',
+          component: "@/pages/news/zhihu",
+        },
+        {
+          path: '/news/douyin',
+          component: "@/pages/news/douyin",
+        },
+        {
+          path: '/news/bili',
+          component: "@/pages/news/bili",
+        },
+      ]
     }
   ],
   history: {type: 'hash'},

@@ -1,7 +1,7 @@
 {
   "private": true,
   "author": "Allensht <swhatw442@qq.com>",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "name": "SHTDaily",
   "main": "./main/index.js",
   "scripts": {
@@ -51,7 +51,9 @@
     "ahooks": "^3.8.0",
     "antd": "^5.4.0",
     "axios": "^1.7.2",
+    "dayjs": "^1.11.12",
     "mac-scrollbar": "^0.13.6",
+    "modern-screenshot": "^4.4.39",
     "qweather-icons": "^1.6.0",
     "react-typewriter-hook": "^1.0.2"
   },
