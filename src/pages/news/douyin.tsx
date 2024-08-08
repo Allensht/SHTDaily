@@ -10,6 +10,7 @@ const Douyin = () => {
     const [messageApi, contextHolder] = message.useMessage();
     const [douyinNews, setDouyinNews] = useLocalStorageState('douyinNews', {
         defaultValue: [],
+        listenStorageChange: true
     })
     const [pathname, setPathname] = useLocalStorageState('pathname', {
         listenStorageChange: true,

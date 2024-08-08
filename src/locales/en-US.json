@@ -10,7 +10,7 @@
   "zhihu": "Zhihu Hot List",
   "douyin": "Douyin Hot List",
   "bili": "Bilibili Hot List",
-  "magicName": "Your daily assistant",
+  "magicName": "SHTDaily | Your daily assistant",
   "copy": "This page has been copied into the clipboard",
   "share": "Share Page",
   "loading": "Loading...",
@@ -19,5 +19,7 @@
   "notice1": "All data in this page comes from official reports to ensure stability and real-time performance",
   "notice2": "This software does not participate in the writing process and will not rewrite the data",
   "settings": "Settings",
-  "language": "Language :"
+  "language": "Language :",
+  "refrush": "Refrush Success",
+  "success": "123"
 }

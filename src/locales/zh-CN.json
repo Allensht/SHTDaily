@@ -10,7 +10,7 @@
   "zhihu": "知乎热榜",
   "douyin": "抖音热榜",
   "bili": "哔哩哔哩热榜",
-  "magicName": "你的日常助手",
+  "magicName": "SHTDaily | 你的日常助手",
   "copy": "此页面已复制到剪贴板",
   "share": "分享页面",
   "loading": "加载中...",
@@ -19,5 +19,7 @@
   "notice1": "此页面所有数据均来自官方报道，确保稳定与实时",
   "notice2": "本软件不参与撰写也不会改写数据",
   "settings": "设置",
-  "language": "语言 :"
+  "language": "语言 :",
+  "refrush": "刷新成功",
+  "success": "123"
 }

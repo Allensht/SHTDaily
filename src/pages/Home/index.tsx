@@ -61,9 +61,6 @@ const Home = () => {
             <div className='typing'>
                 <h1>{typing}</h1>
             </div>
-            <div className="bgLogo">
-                <img src={bgLogoSrc()} style={{ width: "100%", height: "100%" }}/>
-            </div>
         </>
     )
 }

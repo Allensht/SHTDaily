@@ -30,6 +30,25 @@ body {
     -webkit-app-region: drag;
 }
 
+li.ant-menu-item.ant-menu-item-selected.ant-menu-item-only-child::after {
+    clear: both;
+    content: '';
+    display: block;
+    height: 16px;
+    width: 3px;
+    background: var(--ant-menu-item-selected-color);
+    position: absolute;
+    border-radius: 6px;
+    top: 12px;
+    left: 0
+}
+
+.ant-layout-sider-children {
+    margin-inline-end: 0px;
+    border-inline-end: 0px !important;
+    padding-block: 4px !important;
+}
+
 .no-drag,
 .ant-menu-item,
 .ant-pro-sider-actions,

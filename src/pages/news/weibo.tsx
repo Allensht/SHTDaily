@@ -1,14 +1,12 @@
 import { useIntl } from '@umijs/max';
 import axios from 'axios';
 import { useLocalStorageState } from 'ahooks';
-import { Button, message, List, Typography, Divider, Carousel } from 'antd';
-import ShareTool from '@/pages/news/custom/shareTool';
-import React, { useRef } from 'react';
-import NewsCarousel from '@/pages/news/custom/newsCarousel';
+import { Button, message, Divider, Row, Col } from 'antd';
+import NewsList from '@/pages/news/custom/newsList';
+import Reload from '@/pages/news/custom/reload';
 
 const Weibo = () => {
     const intl = useIntl();
-    const pagBodyRef = useRef<HTMLDivElement>(null)
     const title = intl.formatMessage({ id: 'weibo' })
     const loading = intl.formatMessage({ id: 'loading' })
     const error = intl.formatMessage({ id: 'error' })
@@ -18,7 +16,7 @@ const Weibo = () => {
     const weiboNewsUrl = 'https://60s.viki.moe/weibo'
     const [messageApi, contextHolder] = message.useMessage();
     const [weiboNews, setWeiboNews] = useLocalStorageState('weiboNews', {
-        defaultValue: [],
+        listenStorageChange: true
     })
     const [pathname, setPathname] = useLocalStorageState('pathname', {
         listenStorageChange: true,
@@ -34,8 +32,7 @@ const Weibo = () => {
             setTimeout(messageApi.destroy, 3000)
             const response = await axios.get(weiboNewsUrl)
             if (response.status === 200) {
-                setWeiboNews(response.data.data)
-                
+                setWeiboNews(response.data.data) 
             } else {
                 messageApi.open({
                     type: 'error',
@@ -63,15 +60,18 @@ const Weibo = () => {
     }
 
     return (
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center', padding: 20 }}>
             {contextHolder}
-            <List
-                header={<h1>{title}<Divider>{notice1}<br />{notice2}</Divider><ShareTool pagBodyRef={pagBodyRef}/></h1>}
-                footer={<Typography.Text mark>{ weiboNews?.length > 0 ? '' : error }</Typography.Text>}
-                bordered
-            >
-                { weiboNews?.length > 0 ? <NewsCarousel weiboNews={weiboNews}/> : <Button onClick={getWeiboNews}>{reload}</Button> }
-            </List>
+            <h1>{title}</h1>
+            <Divider>{notice1}<br />{notice2}</Divider>
+            <div style={{ marginLeft: 25, marginBottom: 20 }}>
+                <Row gutter={16}>
+                    <Col className="gutter-row" span={3}>
+                        <Reload />
+                    </Col>
+                </Row>
+            </div>
+            { weiboNews?.length > 0 ? <NewsList news={weiboNews}/> : <Button onClick={getWeiboNews}>{reload}</Button> }
         </div>
     )
 }

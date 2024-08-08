@@ -1,7 +1,7 @@
 {
   "private": true,
   "author": "Allensht <swhatw442@qq.com>",
-  "version": "0.3.0",
+  "version": "0.3.5",
   "name": "SHTDaily",
   "main": "./main/index.js",
   "scripts": {
@@ -10,7 +10,8 @@
     "postinstall": "max setup",
     "setup": "max setup",
     "start": "concurrently \"npm run dev\" \"wait-on http://localhost:8000 && electron .\"",
-    "build-win64": "npm run build && electron-builder --win --x64"
+    "build-win64": "npm run build && electron-builder --win --x64",
+    "build-icon": "./node_modules/.bin/electron-icon-builder --input=./src/assets/logo.png --output=./"
   },
   "build": {
     "productName": "SHTDaily",

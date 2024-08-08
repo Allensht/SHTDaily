@@ -15,6 +15,9 @@ const News = () => {
     const [newsDate, setNewsDate] = useLocalStorageState('newsDate', {
         defaultValue: '',
     })
+    const [tip, setTip] = useLocalStorageState('tip', {
+        defaultValue: '',
+    })
     const intl = useIntl();
     const title = intl.formatMessage({ id: 'min' })
     const loading = intl.formatMessage({ id: 'loading' })
@@ -42,7 +45,7 @@ const News = () => {
             if (response.status === 200) {
                 setMinNews(response.data.data.news)
                 setNewsDate(date)
-                
+                setTip(response.data.data.tip)
             } else {
                 messageApi.open({
                     type: 'error',
@@ -77,11 +80,11 @@ const News = () => {
     }, [])
 
     return (
-        <div style={{ textAlign: 'center', backgroundColor: darktheme ? '#141414' : '#fff'}} ref={pagBodyRef}>
+        <div style={{ textAlign: 'center', backgroundColor: darktheme ? '#1d1d1d' : '#fff'}} ref={pagBodyRef}>
             {contextHolder}
             <List
                 header={<h1>{title}<Divider>{notice1}<br />{notice2}</Divider><ShareTool pagBodyRef={pagBodyRef}/>{newsDate}</h1>}
-                footer={<Typography.Text mark>{ minNews?.length > 0 ? '' : error }</Typography.Text>}
+                footer={<Typography.Text mark>{ minNews?.length > 0 ? tip : error }</Typography.Text>}
                 bordered
                 dataSource={minNews}
                 renderItem={(item) => (

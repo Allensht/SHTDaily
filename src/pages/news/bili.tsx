@@ -10,6 +10,7 @@ const Bili = () => {
     const [messageApi, contextHolder] = message.useMessage();
     const [biliNews, setBiliNews] = useLocalStorageState('biliNews', {
         defaultValue: [],
+        listenStorageChange: true
     })
     const [pathname, setPathname] = useLocalStorageState('pathname', {
         listenStorageChange: true,

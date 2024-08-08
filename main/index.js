@@ -1,5 +1,4 @@
-const { app, BrowserWindow, Tray, nativeImage, Menu, ipcMain, nativeTheme, globalShortcut } = require('electron');
-const { log } = require('node:console');
+const { app, BrowserWindow, Tray, nativeImage, Menu, ipcMain, nativeTheme, globalShortcut, shell } = require('electron')
 const path = require('node:path')
 
 function createWindow() {
@@ -13,7 +12,7 @@ function createWindow() {
     },
   ])
   tray.setContextMenu(contextMenu)
-  tray.setToolTip('SHTDaily')
+  tray.setToolTip('你的日常助手')
   tray.setTitle('SHTDaily')
   const win = new BrowserWindow({
     width: 950,
@@ -39,6 +38,16 @@ function createWindow() {
   win.once('ready-to-show', async () => {
     await windowOn(win)
   })
+  if (app.isPackaged) {
+    win.webContents.on('will-navigate', (e, url) => {
+      e.preventDefault()
+      shell.openExternal(url)
+    })
+    win.webContents.setWindowOpenHandler(({ url }) => {
+      shell.openExternal(url)
+      return { action: 'deny' }
+    })
+  }
 }
 
 app.whenReady().then(() => {
