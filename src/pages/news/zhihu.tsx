@@ -1,14 +1,17 @@
 import { useIntl } from '@umijs/max';
 import axios from 'axios';
 import { useLocalStorageState } from 'ahooks';
-import { Button, message, List, Typography, Divider, Row } from 'antd';
+import { Button, message, Divider, Row, Col } from 'antd';
 import Reload from './custom/reload';
+import NewsList from '@/pages/news/custom/newsList';
+import { useEffect } from 'react';
 
 const Zhihu = () => {
     const intl = useIntl();
     const title = intl.formatMessage({ id: 'zhihu' })
     const loading = intl.formatMessage({ id: 'loading' })
     const error = intl.formatMessage({ id: 'error' })
+    const success = intl.formatMessage({ id: 'success' })
     const reload = intl.formatMessage({ id: 'reload' })
     const notice1 = intl.formatMessage({ id: 'notice1' })
     const notice2 = intl.formatMessage({ id: 'notice2' })
@@ -20,43 +23,38 @@ const Zhihu = () => {
     const [pathname, setPathname] = useLocalStorageState('pathname', {
         listenStorageChange: true,
     })
+    const load = () => {
+        messageApi.loading(loading, 0)
+    }
+    const faild = () => {
+        messageApi.error(error, 3)
+    }
+    const succs = () => {
+        messageApi.destroy()
+        messageApi.success(success, 3)
+    }
     
     const getZhihuNews = async () => {
-        messageApi.open({
-            type: 'loading',
-            content: loading,
-            duration: 0,
-        });
-        setTimeout(messageApi.destroy, 3000)
+        load()
         try {
             const response = await axios.get(zhihuNewsUrl)
             if (response.status === 200) {
                 setZhihuNews(response.data.data)
+                succs()
             } else {
-                messageApi.open({
-                    type: 'error',
-                    content: '未知错误，请稍后再试',
-                });
+               faild()
             }
 
         } catch (e) {
-            messageApi.open({
-                type: 'error',
-                content: '未知错误，请稍后再试',
-            });
+            faild()
         }
     }
-    if (pathname === '/news/zhihu') {
-        if (zhihuNews?.length === 0) {
-            messageApi.open({
-                type: 'loading',
-                content: loading,
-                duration: 0,
-            });
-            setTimeout(messageApi.destroy, 3000)
+    
+    useEffect(() => {
+        if (pathname === '/news/zhihu') {
             getZhihuNews()
         }
-    }
+    }, [pathname])
 
     return (
         <div style={{ textAlign: 'center', padding: 20 }}>

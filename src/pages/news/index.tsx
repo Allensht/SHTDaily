@@ -22,6 +22,7 @@ const News = () => {
     const title = intl.formatMessage({ id: 'min' })
     const loading = intl.formatMessage({ id: 'loading' })
     const error = intl.formatMessage({ id: 'error' })
+    const success = intl.formatMessage({ id: 'success' })
     const reload = intl.formatMessage({ id: 'reload' })
     const notice1 = intl.formatMessage({ id: 'notice1' })
     const notice2 = intl.formatMessage({ id: 'notice2' })
@@ -33,43 +34,36 @@ const News = () => {
     const [pathname, setPathname] = useLocalStorageState('pathname', {
         listenStorageChange: true,
     })
+    const load = () => {
+        messageApi.loading(loading, 0)
+    }
+    const faild = () => {
+        messageApi.error(error, 3)
+    }
+    const succs = () => {
+        messageApi.destroy()
+        messageApi.success(success, 3)
+    }
     const getMinNews = async () => {
         try {
-            messageApi.open({
-                type: 'loading',
-                content: loading,
-                duration: 0,
-            });
-            setTimeout(messageApi.destroy, 3000)
+            load()
             const response = await axios.get(minNewsUrl)
             if (response.status === 200) {
                 setMinNews(response.data.data.news)
                 setNewsDate(date)
                 setTip(response.data.data.tip)
+                succs()
             } else {
-                messageApi.open({
-                    type: 'error',
-                    content: error,
-                });
+                faild()
             }
 
         } catch (e) {
-            messageApi.open({
-                type: 'error',
-                content: error,
-            });
+            faild()
         }
     }
     if (pathname === '/news/min') {
         if (minNews?.length === 0) {
-            messageApi.open({
-                type: 'loading',
-                content: loading,
-                duration: 0,
-            });
-            setTimeout(messageApi.destroy, 3000)
             getMinNews()
-            
         }
     }
 
@@ -84,7 +78,7 @@ const News = () => {
             {contextHolder}
             <List
                 header={<h1>{title}<Divider>{notice1}<br />{notice2}</Divider><ShareTool pagBodyRef={pagBodyRef}/>{newsDate}</h1>}
-                footer={<Typography.Text mark>{ minNews?.length > 0 ? tip : error }</Typography.Text>}
+                footer={<Typography.Text mark>{ minNews?.length > 0 ? tip : null }</Typography.Text>}
                 bordered
                 dataSource={minNews}
                 renderItem={(item) => (

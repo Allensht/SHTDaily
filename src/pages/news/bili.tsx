@@ -1,74 +1,73 @@
 import { useIntl } from '@umijs/max';
 import axios from 'axios';
 import { useLocalStorageState } from 'ahooks';
-import { Button, message, List, Typography } from 'antd';
+import { Button, message, Divider, Row, Col } from 'antd';
+import NewsList from '@/pages/news/custom/newsList';
+import Reload from '@/pages/news/custom/reload';
+import { useEffect } from 'react';
 
 const Bili = () => {
     const intl = useIntl();
     const title = intl.formatMessage({ id: 'bili' })
+    const loading = intl.formatMessage({ id: 'loading' })
+    const error = intl.formatMessage({ id: 'error' })
+    const success = intl.formatMessage({ id: 'success' })
+    const reload = intl.formatMessage({ id: 'reload' })
+    const notice1 = intl.formatMessage({ id: 'notice1' })
+    const notice2 = intl.formatMessage({ id: 'notice2' })
     const biliNewsUrl = 'https://60s.viki.moe/bili'
     const [messageApi, contextHolder] = message.useMessage();
     const [biliNews, setBiliNews] = useLocalStorageState('biliNews', {
-        defaultValue: [],
         listenStorageChange: true
     })
     const [pathname, setPathname] = useLocalStorageState('pathname', {
         listenStorageChange: true,
     })
+    const load = () => {
+        messageApi.loading(loading, 0)
+    }
+    const faild = () => {
+        messageApi.error(error, 3)
+    }
+    const succs = () => {
+        messageApi.destroy()
+        messageApi.success(success, 3)
+    }
     
     const getBiliNews = async () => {
-        messageApi.open({
-            type: 'loading',
-            content: '加载中...',
-            duration: 0,
-        });
-        setTimeout(messageApi.destroy, 5000)
+        load()
         try {
             const response = await axios.get(biliNewsUrl)
             if (response.status === 200) {
-                setBiliNews(response.data.data.news)
+                setBiliNews(response.data.data)
+                succs()
             } else {
-                messageApi.open({
-                    type: 'error',
-                    content: '未知错误，请稍后再试',
-                });
+                faild()
             }
 
         } catch (e) {
-            messageApi.open({
-                type: 'error',
-                content: '未知错误，请稍后再试',
-            });
+            faild()
         }
     }
-    if (pathname === '/news/toutiao') {
-        if (biliNews.length === 0) {
-            messageApi.open({
-                type: 'loading',
-                content: '加载中...',
-                duration: 0,
-            });
-            setTimeout(messageApi.destroy, 5000)
+    useEffect(() => {
+        if (pathname === '/news/bili') {
             getBiliNews()
         }
-    }
+    }, [pathname])
 
     return (
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center', padding: 20 }}>
             {contextHolder}
-            <List
-                header={<h1>{title}</h1>}
-                footer={<Typography.Text mark>{ biliNews.length > 0 ? '本页面所有数据均来自官方，确保稳定与实时' : '未知错误，请稍后再试' }</Typography.Text>}
-                bordered
-                dataSource={biliNews}
-                renderItem={(item) => (
-                    <List.Item>
-                      {item}
-                    </List.Item>
-                )}
-            >
-                { biliNews.length > 0 ? null : <Button onClick={getBiliNews}>点击重试</Button> }
-            </List>
+            <h1>{title}</h1>
+            <Divider>{notice1}<br />{notice2}</Divider>
+            <div style={{ marginLeft: 25, marginBottom: 20 }}>
+                <Row gutter={16}>
+                    <Col className="gutter-row" span={3}>
+                        <Reload />
+                    </Col>
+                </Row>
+            </div>
+            { biliNews?.length > 0 ? <NewsList news={biliNews}/> : <Button onClick={getBiliNews}>{reload}</Button> }
         </div>
     )
 }

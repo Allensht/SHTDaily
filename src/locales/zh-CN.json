@@ -21,5 +21,8 @@
   "settings": "设置",
   "language": "语言 :",
   "refrush": "刷新成功",
-  "success": "123"
+  "success": "加载成功",
+  "theme": "主题",
+  "setting": "设置中...",
+  "settingSuccs": "设置成功"
 }

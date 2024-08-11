@@ -4,12 +4,14 @@ import { useLocalStorageState } from 'ahooks';
 import { Button, message, Divider, Row, Col } from 'antd';
 import NewsList from '@/pages/news/custom/newsList';
 import Reload from '@/pages/news/custom/reload';
+import { useEffect } from 'react';
 
 const Weibo = () => {
     const intl = useIntl();
     const title = intl.formatMessage({ id: 'weibo' })
     const loading = intl.formatMessage({ id: 'loading' })
     const error = intl.formatMessage({ id: 'error' })
+    const success = intl.formatMessage({ id: 'success' })
     const reload = intl.formatMessage({ id: 'reload' })
     const notice1 = intl.formatMessage({ id: 'notice1' })
     const notice2 = intl.formatMessage({ id: 'notice2' })
@@ -21,43 +23,38 @@ const Weibo = () => {
     const [pathname, setPathname] = useLocalStorageState('pathname', {
         listenStorageChange: true,
     })
+    const load = () => {
+        messageApi.loading(loading, 0)
+    }
+    const faild = () => {
+        messageApi.error(error, 3)
+    }
+    const succs = () => {
+        messageApi.destroy()
+        messageApi.success(success, 3)
+    }
     
     const getWeiboNews = async () => {
         try {
-            messageApi.open({
-                type: 'loading',
-                content: loading,
-                duration: 0,
-            });
-            setTimeout(messageApi.destroy, 3000)
+            load()
             const response = await axios.get(weiboNewsUrl)
             if (response.status === 200) {
                 setWeiboNews(response.data.data) 
+                succs()
             } else {
-                messageApi.open({
-                    type: 'error',
-                    content: error,
-                });
+                faild()
             }
 
         } catch (e) {
-            messageApi.open({
-                type: 'error',
-                content: error,
-            });
+            faild()
         }
     }
-    if (pathname === '/news/weibo') {
-        if (weiboNews?.length === 0) {
-            messageApi.open({
-                type: 'loading',
-                content: loading,
-                duration: 0,
-            });
-            setTimeout(messageApi.destroy, 3000)
+    
+    useEffect(() => {
+        if (pathname === '/news/weibo') {
             getWeiboNews()
         }
-    }
+    }, [pathname])
 
     return (
         <div style={{ textAlign: 'center', padding: 20 }}>

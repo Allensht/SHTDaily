@@ -7,10 +7,14 @@ import '@/pages/news/custom/reload/index.less'
 import { useEffect } from "react";
 
 const Reload = () => {
+    const [darktheme, setDarktheme] = useLocalStorageState('darktheme', {
+        listenStorageChange: true,
+    })
     const intl = useIntl();
     const [messageApi, contextHolder] = message.useMessage()
     const loading = intl.formatMessage({ id: 'loading' })
     const error = intl.formatMessage({ id: 'error' })
+    const success = intl.formatMessage({ id: 'success' })
     const [pathname, setPathname] = useLocalStorageState('pathname', {
         listenStorageChange: true,
     })
@@ -32,19 +36,25 @@ const Reload = () => {
     const [nowUrl, setNowUrl] = useLocalStorageState('nowUrl', {
         defaultValue: '',
     })
+    const load = () => {
+        messageApi.loading(loading, 0)
+    }
+    const faild = () => {
+        messageApi.error(error, 3)
+    }
+    const succs = () => {
+        messageApi.destroy()
+        messageApi.success(success, 3)
+    }
     useEffect(() => {
         setNowUrl(`https://60s.viki.moe/${pathname.slice(6)}`)
     }, [pathname])
     const getNews = async () => {
         try {
-            messageApi.open({
-                type: 'loading',
-                content: loading,
-                duration: 0,
-            });
-            setTimeout(messageApi.destroy, 3000)
+            load()
             const response = await axios.get(nowUrl)
             if (response.status === 200) {
+                succs()
                 if (nowUrl === 'https://60s.viki.moe/weibo') {
                     setWeiboNews(response.data.data)
                 } else if (nowUrl === 'https://60s.viki.moe/toutiao') {
@@ -57,17 +67,11 @@ const Reload = () => {
                     setBiliNews(response.data.data)
                 }
             } else {
-                messageApi.open({
-                    type: 'error',
-                    content: error,
-                });
+                faild()
             }
 
         } catch (e) {
-            messageApi.open({
-                type: 'error',
-                content: error,
-            });
+            faild()
         }
     }
 
@@ -76,7 +80,10 @@ const Reload = () => {
         {contextHolder}
         <Flex gap="small" align="flex-start" vertical>
           <Flex gap="small" wrap>
-            <button onClick={getNews}>
+            <button onClick={getNews} style={{
+                backgroundColor: darktheme ? '#fff' : '#000',
+                color: darktheme ? '#000' : '#fff',
+            }}>
                 <ReloadOutlined />
             </button>
           </Flex>
