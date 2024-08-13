@@ -1,6 +1,5 @@
-import { GithubFilled, InfoCircleFilled, QuestionCircleFilled, SettingOutlined } from '@ant-design/icons';
+import { GithubFilled, InfoCircleFilled, QuestionCircleFilled } from '@ant-design/icons';
 import { PageContainer, ProLayout } from '@ant-design/pro-components';
-import avatarSvg from '@/assets/avatar.svg';
 import logo from '@/assets/logo.png';
 import pageConfig from './pageConfig';
 import { Outlet, setLocale, Link } from '@umijs/max';
@@ -8,15 +7,14 @@ import { useEffect, useState } from 'react';
 import 'mac-scrollbar/dist/mac-scrollbar.css';
 import { MacScrollbar } from 'mac-scrollbar';
 import './index.less';
-import { Divider, ConfigProvider, theme, ThemeConfig } from 'antd';
+import { ConfigProvider, Divider, theme, ThemeConfig } from 'antd';
 import Burger from '@/layouts/custom/burger'
-import Settings from './custom/settings';
 import { useLocalStorageState } from 'ahooks';
 
 export default () => {
-  const [darktheme, setDarkTheme] = useLocalStorageState<boolean>('darktheme', { defaultValue: false })
+  const [darktheme, setDarkTheme] = useLocalStorageState<boolean>('darktheme', { listenStorageChange: true })
   const [pathname, setPathname] = useLocalStorageState<string>('pathname', { defaultValue: '/home' })
-  const [enUS, setEnUS] = useLocalStorageState('enUS', { defaultValue: false })
+  const [enUS, setEnUS] = useLocalStorageState('enUS', { listenStorageChange: true })
   const [collapsed, setCollapsed] = useState(true);
   const bgStyle = { background: `radial-gradient(circle at 100%,#121212, #121212 50%, #eee 75%, #121212 75%)`, height: '100vh' }
   useEffect(() => {
@@ -25,13 +23,13 @@ export default () => {
   useEffect(() => {
     window.electron.darkTheme(darktheme ? "dark" : "light")
   }, [darktheme])
-  const config: ThemeConfig = { //配置主题
+  const config: ThemeConfig = {
     cssVar: true,
     algorithm: darktheme ? theme.darkAlgorithm : theme.defaultAlgorithm,
     token: {
       "colorPrimary": "#4096ff",
       "colorInfo": "#4096ff",
-      "colorBgLayout": darktheme ? "#121212" : "#fff",
+      "colorBgContainer": darktheme ? '#1d1d1d' : '#fff'
     }
   };
   const ImageLimit = ({ src, width, height }) => {
@@ -44,12 +42,8 @@ export default () => {
 
   return (
     <>
-        <div className='headerTool drag'>
-          <div className='settings no-drag'>
-            <Settings setEnUS={setEnUS} setDarkTheme={setDarkTheme} enUS={enUS} darktheme={darktheme} />
-          </div>
-        </div>
-        <Divider style={{ marginTop: 15, padding: 0 }}></Divider>
+      {darktheme ? null : <div className='drag' style={{ height: 35 }}></div>}
+      <div className={darktheme ? 'bg' : 'bgGrid'} style={{position: 'absolute', width: '100%', height: '100vh', overflow: 'hidden', backgroundColor: darktheme ? "#121212" : "#fff", zIndex: -1}}></div>
       <div
         className="pro-layout"
       >
@@ -84,11 +78,11 @@ export default () => {
                 {dom}
               </Link>
             )}
-            menu={{ type: 'sub', defaultOpenAll: true }}
+            menu={{ type: 'group', defaultOpenAll: true }}
           >
             <PageContainer
               header={{
-                style: { top: "-30px" }
+                style: darktheme ? { top: "-20px" } : { top: "-55px" },
               }}
               breadcrumbRender={() => {
                 return (
@@ -100,7 +94,7 @@ export default () => {
             >
               <MacScrollbar
                 className='pagBody'
-                style={{ backgroundColor: darktheme ? '#1d1d1d' : '#fff'}}
+                style={{backgroundColor: darktheme ? '#1d1d1d' : '#fff', marginTop: darktheme ? '35px' : '0'}}
               >
                 <Outlet />
               </MacScrollbar>

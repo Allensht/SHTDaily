@@ -2,28 +2,36 @@ const { app, BrowserWindow, Tray, nativeImage, Menu, ipcMain, nativeTheme, globa
 const path = require('node:path')
 
 function createWindow() {
-  const trayIcon = nativeImage.createFromPath('./icons/win/icon.ico')
   const appIcon = nativeImage.createFromPath('./icons/win/icon.ico')
-  const tray = new Tray(trayIcon)
   const contextMenu = Menu.buildFromTemplate([
     {
       label: '退出',
       role: 'quit' 
     },
   ])
-  tray.setContextMenu(contextMenu)
-  tray.setToolTip('你的日常助手')
-  tray.setTitle('SHTDaily')
+  if (process.platform === 'win32') {
+    const trayIcon = nativeImage.createFromPath('./icons/win/icon.ico')
+    const tray = new Tray(trayIcon)
+    tray.setContextMenu(contextMenu)
+    tray.setTitle('SHTDaily')
+    tray.setToolTip('你的日常助手')
+  } else if (process.platform === 'darwin') {
+    const trayIcon = nativeImage.createFromPath('./icons/mac/icon.icns')
+    const tray = new Tray(trayIcon)
+    tray.setContextMenu(contextMenu)
+    tray.setTitle('SHTDaily')
+    tray.setToolTip('你的日常助手')
+  }
   const win = new BrowserWindow({
-    width: 950,
-    height: 650,
-    minWidth: 950,
-    minHeight: 650,
+    width: 1000,
+    height: 700,
+    minWidth: 1000,
+    minHeight: 700,
     frame: false,
     icon: appIcon,
     titleBarStyle: 'hidden',
     titleBarOverlay: {
-        height: 60,
+        height: 35,
         color: '#ffffff00',
         symbolColor: '#000'
     },
@@ -48,6 +56,9 @@ function createWindow() {
       return { action: 'deny' }
     })
   }
+  if (process.platform === 'darwin') {
+    app.dock.setIcon(path.join(__dirname, './icons/mac/icon.icns'))
+  }
 }
 
 app.whenReady().then(() => {
@@ -68,7 +79,7 @@ app.on('activate', () => {
 });
 
 function windowOn(win) {
-  globalShortcut.register('Alt+CommandOrControl+Shift+S', () => {
+  globalShortcut.register('Alt+CommandOrControl+Space', () => {
     if (win.isVisible()) {
       win.hide();
     } else {
@@ -78,14 +89,18 @@ function windowOn(win) {
 
   ipcMain.on("dark", () => {
     nativeTheme.themeSource = "dark"
-    win.setTitleBarOverlay({
+    if (process.platform === 'win32') {
+      win.setTitleBarOverlay({
         symbolColor: '#fff',
-    })
+      })
+    }
   })
   ipcMain.on("light", () => {
     nativeTheme.themeSource = "light"
-    win.setTitleBarOverlay({
-      symbolColor: '#000',
-    })
+    if (process.platform === 'win32') {
+      win.setTitleBarOverlay({
+        symbolColor: '#000',
+      })
+    }
   })
 }

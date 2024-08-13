@@ -1,4 +1,4 @@
-import { HomeOutlined, CloudOutlined, ProjectOutlined, TikTokOutlined, BilibiliOutlined, ZhihuOutlined, WeiboOutlined } from '@ant-design/icons';
+import { HomeOutlined, CloudOutlined, ProjectOutlined, TikTokOutlined, BilibiliOutlined, ZhihuOutlined, WeiboOutlined, SettingOutlined } from '@ant-design/icons';
 import { useIntl } from '@umijs/max';
 import { ReactComponent as ToutiaoOutLined } from '@/assets/toutiao.svg';
 const Home = () => {
@@ -15,6 +15,11 @@ const News = () => {
   const intl = useIntl();
   return intl.formatMessage({ id: 'news' })
 
+}
+
+const Hot = () => {
+  const intl = useIntl();
+  return intl.formatMessage({ id: 'hot' })
 }
 
 const Min = () => {
@@ -37,14 +42,9 @@ const Zhihu = () => {
   return intl.formatMessage({ id: 'zhihu' })
 }
 
-const Douyin = () => {
-  const intl = useIntl();
-  return intl.formatMessage({ id: 'douyin' })
-}
-
-const Bili = () => {
-  const intl = useIntl();
-  return intl.formatMessage({ id: 'bili' })
+const Settings = () => {
+  const intl = useIntl()
+  return intl.formatMessage({ id: 'settings' })
 }
 
 export default {
@@ -70,34 +70,36 @@ export default {
                 path: '/news/min',
                 name: <Min />,
                 icon: <ProjectOutlined />,
-              },
-              {
-                path: '/news/weibo',
-                name: <Weibo />,
-                icon: <WeiboOutlined />,
-              },
-              {
-                path: '/news/toutiao',
-                name: <Toutiao />,
-                icon: <ToutiaoOutLined />,
-              },
-              {
-                path: '/news/zhihu',
-                name: <Zhihu />,
-                icon: <ZhihuOutlined />,
-              },
-              {
-                path: '/news/douyin',
-                name: <Douyin />,
-                icon: <TikTokOutlined />,
-              },
-              {
-                path: '/news/bili',
-                name: <Bili />,
-                icon: <BilibiliOutlined />,
-              },
+              }
             ]
         },
+        {
+          path: '/hot',
+          name: <Hot />,
+          icon: <ProjectOutlined />,
+          routes: [
+            {
+              path: '/hot/weibo',
+              name: <Weibo />,
+              icon: <WeiboOutlined />,
+            },
+            {
+              path: '/hot/toutiao',
+              name: <Toutiao />,
+              icon: <ToutiaoOutLined />,
+            },
+            {
+              path: '/hot/zhihu',
+              name: <Zhihu />,
+              icon: <ZhihuOutlined />,
+            }
+          ]
+        },
+        {
+          path: '/settings',
+          name: <Settings />,
+          icon: <SettingOutlined />,
+      } ,
       ]
     } 
 }

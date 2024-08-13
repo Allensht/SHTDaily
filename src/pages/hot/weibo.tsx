@@ -2,8 +2,8 @@ import { useIntl } from '@umijs/max';
 import axios from 'axios';
 import { useLocalStorageState } from 'ahooks';
 import { Button, message, Divider, Row, Col } from 'antd';
-import NewsList from '@/pages/news/custom/newsList';
-import Reload from '@/pages/news/custom/reload';
+import NewsList from '@/pages/custom/newsList';
+import Reload from '@/pages/custom/reload';
 import { useEffect } from 'react';
 
 const Weibo = () => {
@@ -33,13 +33,13 @@ const Weibo = () => {
         messageApi.destroy()
         messageApi.success(success, 3)
     }
-    
+
     const getWeiboNews = async () => {
         try {
             load()
             const response = await axios.get(weiboNewsUrl)
             if (response.status === 200) {
-                setWeiboNews(response.data.data) 
+                setWeiboNews(response.data.data)
                 succs()
             } else {
                 faild()
@@ -49,9 +49,9 @@ const Weibo = () => {
             faild()
         }
     }
-    
+
     useEffect(() => {
-        if (pathname === '/news/weibo') {
+        if (pathname === '/hot/weibo') {
             getWeiboNews()
         }
     }, [pathname])
@@ -68,7 +68,7 @@ const Weibo = () => {
                     </Col>
                 </Row>
             </div>
-            { weiboNews?.length > 0 ? <NewsList news={weiboNews}/> : <Button onClick={getWeiboNews}>{reload}</Button> }
+            {weiboNews?.length > 0 ? <NewsList news={weiboNews} /> : <Button onClick={getWeiboNews}>{reload}</Button>}
         </div>
     )
 }

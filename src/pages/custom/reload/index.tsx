@@ -3,7 +3,7 @@ import { useIntl } from "@umijs/max";
 import { useLocalStorageState } from "ahooks";
 import { Flex, message } from "antd";
 import axios from "axios";
-import '@/pages/news/custom/reload/index.less'
+import '@/pages/custom/reload/index.less'
 import { useEffect } from "react";
 
 const Reload = () => {
@@ -25,12 +25,6 @@ const Reload = () => {
         defaultValue: [],
     })
     const [zhihuNews, setZhihuNews] = useLocalStorageState('zhihuNews', {
-        defaultValue: [],
-    })
-    const [douyinNews, setDouyinNews] = useLocalStorageState('douyinNews', {
-        defaultValue: [],
-    })
-    const [biliNews, setBiliNews] = useLocalStorageState('biliNews', {
         defaultValue: [],
     })
     const [nowUrl, setNowUrl] = useLocalStorageState('nowUrl', {
@@ -59,17 +53,12 @@ const Reload = () => {
                     setWeiboNews(response.data.data)
                 } else if (nowUrl === 'https://60s.viki.moe/toutiao') {
                     setToutiaoNews(response.data.data)
-                } else if (nowUrl === 'https://60s.viki.moe/zhihu') {
-                    setZhihuNews(response.data.data)
-                } else if (nowUrl === 'https://60s.viki.moe/douyin') {
-                    setDouyinNews(response.data.data)
                 } else {
-                    setBiliNews(response.data.data)
+                    setZhihuNews(response.data.data)
                 }
             } else {
                 faild()
             }
-
         } catch (e) {
             faild()
         }

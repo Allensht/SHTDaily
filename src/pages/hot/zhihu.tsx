@@ -2,22 +2,22 @@ import { useIntl } from '@umijs/max';
 import axios from 'axios';
 import { useLocalStorageState } from 'ahooks';
 import { Button, message, Divider, Row, Col } from 'antd';
-import NewsList from '@/pages/news/custom/newsList';
-import Reload from '@/pages/news/custom/reload';
+import Reload from '@/pages/custom/reload';
+import NewsList from '@/pages/custom/newsList';
 import { useEffect } from 'react';
 
-const Toutiao = () => {
+const Zhihu = () => {
     const intl = useIntl();
-    const title = intl.formatMessage({ id: 'toutiao' })
+    const title = intl.formatMessage({ id: 'zhihu' })
     const loading = intl.formatMessage({ id: 'loading' })
     const error = intl.formatMessage({ id: 'error' })
     const success = intl.formatMessage({ id: 'success' })
     const reload = intl.formatMessage({ id: 'reload' })
     const notice1 = intl.formatMessage({ id: 'notice1' })
     const notice2 = intl.formatMessage({ id: 'notice2' })
-    const toutiaoNewsUrl = 'https://60s.viki.moe/toutiao'
+    const zhihuNewsUrl = 'https://60s.viki.moe/zhihu'
     const [messageApi, contextHolder] = message.useMessage();
-    const [toutiaoNews, setToutiaoNews] = useLocalStorageState('toutiaoNews', {
+    const [zhihuNews, setZhihuNews] = useLocalStorageState('zhihuNews', {
         listenStorageChange: true
     })
     const [pathname, setPathname] = useLocalStorageState('pathname', {
@@ -33,13 +33,13 @@ const Toutiao = () => {
         messageApi.destroy()
         messageApi.success(success, 3)
     }
-    
-    const getToutiaoNews = async () => {
+
+    const getZhihuNews = async () => {
+        load()
         try {
-            load()
-            const response = await axios.get(toutiaoNewsUrl)
+            const response = await axios.get(zhihuNewsUrl)
             if (response.status === 200) {
-                setToutiaoNews(response.data.data)
+                setZhihuNews(response.data.data)
                 succs()
             } else {
                 faild()
@@ -49,12 +49,13 @@ const Toutiao = () => {
             faild()
         }
     }
+
     useEffect(() => {
-        if (pathname === '/news/toutiao') {
-            getToutiaoNews()
+        if (pathname === '/hot/zhihu') {
+            getZhihuNews()
         }
     }, [pathname])
-    
+
     return (
         <div style={{ textAlign: 'center', padding: 20 }}>
             {contextHolder}
@@ -67,8 +68,8 @@ const Toutiao = () => {
                     </Col>
                 </Row>
             </div>
-            { toutiaoNews?.length > 0 ? <NewsList news={toutiaoNews}/> : <Button onClick={getToutiaoNews}>{reload}</Button> }
+            {zhihuNews?.length > 0 ? <NewsList news={zhihuNews} /> : <Button onClick={getZhihuNews}>{reload}</Button>}
         </div>
     )
 }
-export default Toutiao
+export default Zhihu

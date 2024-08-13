@@ -1,10 +1,10 @@
-import '@/layouts/custom/themeTool/index.less'
+import '@/pages/settings/mod/themeTool/index.less'
 
-const ThemeTool = (e: { set: Function, darkTheme: boolean }) => {
-    const { set, darkTheme } = e
+const ThemeTool = (e: { changeTheme: Function, darkTheme: boolean }) => {
+    const { changeTheme, darkTheme } = e
     return (
         <label className="theme-switch">
-            <input type="checkbox" className="theme-switch__checkbox" onChange={() => set(!darkTheme ? 'dark' : 'light')} checked={darkTheme} />
+            <input type="checkbox" className="theme-switch__checkbox" onChange={() => changeTheme()} checked={darkTheme} />
             <div className="theme-switch__container">
                 <div className="theme-switch__clouds"></div>
                 <div className="theme-switch__stars-container">

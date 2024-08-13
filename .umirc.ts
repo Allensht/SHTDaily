@@ -27,28 +27,31 @@ export default defineConfig({
         {
           path: '/news/min',
           component: "@/pages/news/index",
-        },
-        {
-          path: '/news/weibo',
-          component: "@/pages/news/weibo",
-        },
-        {
-          path: '/news/toutiao',
-          component: "@/pages/news/toutiao",
-        },
-        {
-          path: '/news/zhihu',
-          component: "@/pages/news/zhihu",
-        },
-        {
-          path: '/news/douyin',
-          component: "@/pages/news/douyin",
-        },
-        {
-          path: '/news/bili',
-          component: "@/pages/news/bili",
-        },
+        }
       ]
+    },
+    {
+      path: "/hot",
+      component: '@/layouts/index',
+      layout: false,
+      routes: [
+        {
+          path: '/hot/weibo',
+          component: "@/pages/hot/weibo",
+        },
+        {
+          path: '/hot/toutiao',
+          component: "@/pages/hot/toutiao",
+        },
+        {
+          path: '/hot/zhihu',
+          component: "@/pages/hot/zhihu",
+        }
+      ]
+    },
+    {
+      path: '/settings',
+      component: '@/pages/settings'
     }
   ],
   history: {type: 'hash'},

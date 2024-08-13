@@ -4,7 +4,7 @@ import { useLocalStorageState } from 'ahooks';
 import { Button, message, List, Typography, Divider } from 'antd';
 import dayjs from 'dayjs'
 import { useEffect, useRef } from 'react';
-import ShareTool from '@/pages/news/custom/shareTool';
+import ShareTool from '@/pages/custom/shareTool';
 
 const News = () => {
     const [darktheme, setDarkTheme] = useLocalStorageState('darktheme', {
@@ -70,24 +70,24 @@ const News = () => {
     useEffect(() => {
         if (dayjs().isAfter(newsDate, 'day')) {
             getMinNews()
-        } 
+        }
     }, [])
 
     return (
-        <div style={{ textAlign: 'center', backgroundColor: darktheme ? '#1d1d1d' : '#fff'}} ref={pagBodyRef}>
+        <div style={{ textAlign: 'center', backgroundColor: darktheme ? '#1d1d1d' : '#fff' }} ref={pagBodyRef}>
             {contextHolder}
             <List
-                header={<h1>{title}<Divider>{notice1}<br />{notice2}</Divider><ShareTool pagBodyRef={pagBodyRef}/>{newsDate}</h1>}
-                footer={<Typography.Text mark>{ minNews?.length > 0 ? tip : null }</Typography.Text>}
+                header={<h1>{title}<Divider>{notice1}<br />{notice2}</Divider><ShareTool pagBodyRef={pagBodyRef} />{newsDate}</h1>}
+                footer={<Typography.Text mark>{minNews?.length > 0 ? tip : null}</Typography.Text>}
                 bordered
                 dataSource={minNews}
                 renderItem={(item) => (
                     <List.Item>
-                      {item}
+                        {item}
                     </List.Item>
                 )}
             >
-                { minNews?.length > 0 ? null : <Button onClick={getMinNews}>{reload}</Button> }
+                {minNews?.length > 0 ? null : <Button onClick={getMinNews}>{reload}</Button>}
             </List>
         </div>
     )

@@ -11,9 +11,9 @@ body {
 }
 
 .pagBody {
-    height: calc(95vh - 152px);
+    height: calc(90vh - 70px);
     width: -webkit-fill-available;
-    top: 100px;
+    top: 75px;
     position: absolute;
     overflow: auto;
     border-radius: 30px 30px 30px 30px;
@@ -21,7 +21,7 @@ body {
     border-left: 1px solid;
     border-right: 1px solid;
     border-bottom: 1px solid;
-    margin-right: 20px;
+    margin-right: 30px;
 }
 
 .ant-page-header.ant-page-header-ghost,
@@ -61,27 +61,16 @@ li.ant-menu-item.ant-menu-item-selected.ant-menu-item-only-child::after {
     padding-left: 30px;
 }
 
-.headerTool {
-    height: 20px;
-}
-
-.ant-layout-sider {
-    padding-top: 50px;
-}
-
 .ant-pro-layout-bg-list {
-    z-index: -1;
+    display: none;
 }
 
-.themeTool {
-    width: 56px;
-    margin-top: 3px;
-}
-
-.settings {
-    width: 45px;
-    top: 15px;
-    left: 50vw - 5px;
-    position: relative;
-    z-index: 1;
+.bgGrid {
+    width: 100%;
+    height: 100%;
+    --color: #E1E1E1;
+    background-color: #F3F3F3;
+    background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);
+    background-size: 55px 55px;
 }

@@ -3,8 +3,6 @@
   "weather": "Weather",
   "news": "News",
   "light": "Light",
-  "dark": "Dark",
-  "min": "Daily Briefing",
   "weibo": "Weibo Hot List",
   "toutiao": "Toutiao Hot List",
   "zhihu": "Zhihu Hot List",
@@ -20,9 +18,7 @@
   "notice2": "This software does not participate in the writing process and will not rewrite the data",
   "settings": "Settings",
   "language": "Language :",
-  "refrush": "Refrush Success",
   "success": "Loading Success",
   "theme": "Theme",
-  "setting": "Setting...",
-  "settingSuccs": "Setting Success"
+  "hot": "Hot List"
 }

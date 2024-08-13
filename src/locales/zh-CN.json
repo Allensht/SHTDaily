@@ -2,8 +2,6 @@
   "home": "首页",
   "weather": "天气",
   "news": "新闻",
-  "light": "日间",
-  "dark": "夜间",
   "min": "每日简报",
   "weibo": "微博热榜",
   "toutiao": "头条热榜",
@@ -20,9 +18,7 @@
   "notice2": "本软件不参与撰写也不会改写数据",
   "settings": "设置",
   "language": "语言 :",
-  "refrush": "刷新成功",
   "success": "加载成功",
   "theme": "主题",
-  "setting": "设置中...",
-  "settingSuccs": "设置成功"
+  "hot": "热榜"
 }
