@@ -1,4 +1,4 @@
-import { HomeOutlined, CloudOutlined, ProjectOutlined, TikTokOutlined, BilibiliOutlined, ZhihuOutlined, WeiboOutlined, SettingOutlined } from '@ant-design/icons';
+import { HomeOutlined, CloudOutlined, ProjectOutlined, ZhihuOutlined, WeiboOutlined, SettingOutlined, FireOutlined, BookOutlined } from '@ant-design/icons';
 import { useIntl } from '@umijs/max';
 import { ReactComponent as ToutiaoOutLined } from '@/assets/toutiao.svg';
 const Home = () => {
@@ -69,14 +69,14 @@ export default {
               {
                 path: '/news/min',
                 name: <Min />,
-                icon: <ProjectOutlined />,
+                icon: <BookOutlined />,
               }
             ]
         },
         {
           path: '/hot',
           name: <Hot />,
-          icon: <ProjectOutlined />,
+          icon: <FireOutlined />,
           routes: [
             {
               path: '/hot/weibo',
