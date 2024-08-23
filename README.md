@@ -22,7 +22,8 @@
 - [预览](#预览)
 - [使用指南](#使用指南)
 - [文件目录说明](#文件目录说明)
-- [使用到的框架](#使用到的框架)
+- [使用到的](#使用到的)
+- [下一步](#下一步)
 - [贡献者](#贡献者)
   - [如何参与开源项目](#如何参与开源项目)
 - [版本控制](#版本控制)
@@ -118,9 +119,17 @@ SHTDaily-PC
 ```
 
 
-### 使用到的框架
+### 使用到的
 
-<img src="src/assets/dependencies.png" alt="Logo" width="100%" height="100%">
+- <img src="src/assets/dependencies.png" alt="Logo" width="100%" height="100%">
+- 实时热榜和每日简报数据来自[60sAPi](https://github.com/vikiboss/60s)
+
+### 下一步
+
+- 增加天气预报功能、百科搜索功能等更多功能
+- 完善**设置**功能
+- 增加软件更新功能
+- 适配Windows、macOS、Linux三平台
 
 ### 贡献者
 
