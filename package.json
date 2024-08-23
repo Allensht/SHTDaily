@@ -55,7 +55,6 @@
     "dayjs": "^1.11.12",
     "mac-scrollbar": "^0.13.6",
     "modern-screenshot": "^4.4.39",
-    "qweather-icons": "^1.6.0",
     "react-typewriter-hook": "^1.0.2"
   },
   "devDependencies": {
