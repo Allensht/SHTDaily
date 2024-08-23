@@ -10,8 +10,7 @@
     "postinstall": "max setup",
     "setup": "max setup",
     "start": "concurrently \"npm run dev\" \"wait-on http://localhost:8000 && electron .\"",
-    "build-win64": "npm run build && electron-builder --win --x64",
-    "build-icon": "./node_modules/.bin/electron-icon-builder --input=./src/assets/logo.png --output=./"
+    "build-win64": "npm run build && electron-builder --win --x64"
   },
   "build": {
     "productName": "SHTDaily",
