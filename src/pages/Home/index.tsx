@@ -2,9 +2,6 @@ import { useEffect, useState } from 'react';
 import './index.less';
 import useTypewriter from "react-typewriter-hook"
 import { getLocale, useIntl } from '@umijs/max';
-import bgLogo from '@/assets/bgLogo.png'
-import bgLogoLight from '@/assets/bgLogoLight.png'
-import { useLocalStorageState } from 'ahooks';
 
 const Home = () => {
     const intl = useIntl()
@@ -14,16 +11,6 @@ const Home = () => {
         setMagicName(intl.formatMessage({ id: "magicName" }))
     }, [locale])
     const typing = useTypewriter(magicName)
-    const [darktheme, setDarktheme] = useLocalStorageState('darktheme', {
-        listenStorageChange: true,
-    })
-    const bgLogoSrc = () => {
-        if (darktheme) {
-            return bgLogo
-        } else {
-            return bgLogoLight
-        }
-    }
     return (
         <>
             <div className="loader">
