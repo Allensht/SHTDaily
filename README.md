@@ -19,6 +19,7 @@
  
 ## 目录
 
+- [预览](#预览)
 - [使用指南](#使用指南)
 - [文件目录说明](#文件目录说明)
 - [使用到的框架](#使用到的框架)
@@ -31,13 +32,17 @@
 - [版权说明](#版权说明)
 - [赞助](#赞助)
 
+### 预览
+
+<img src="src/assets/preview.gif" alt="Logo" width="100%" height="100%">
+
 ### 使用指南
 
 1. 克隆本项目
 2. 安装项目依赖
 3. 开发: 运行项目 or 使用: 打包项目
 
-<img src="src/assets/use.png" alt="Logo" width="100%" height="100%">
+<img src="src/assets/toUse.png" alt="Logo" width="100%" height="100%">
 
 ### 文件目录说明
 
