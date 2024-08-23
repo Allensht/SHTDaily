@@ -16,10 +16,6 @@ export default defineConfig({
       component: "@/pages/home",
     },
     {
-      path: "/weather",
-      component: "@/pages/weather",
-    },
-    {
       path: "/news",
       component: '@/layouts/index',
       layout: false,

@@ -6,17 +6,12 @@ const Home = () => {
   return intl.formatMessage({ id: 'home' })
 }
 
-const Weather = () => {
-  const intl = useIntl();
-  return intl.formatMessage({ id: 'weather' })
-}
-
 const News = () => {
   const intl = useIntl();
   return intl.formatMessage({ id: 'news' })
 
 }
-
+  
 const Hot = () => {
   const intl = useIntl();
   return intl.formatMessage({ id: 'hot' })
@@ -55,11 +50,6 @@ export default {
           path: '/home',
           name: <Home />,
           icon: <HomeOutlined />,
-        },
-        {
-            path: '/weather',
-            name: <Weather />,
-            icon: <CloudOutlined />,
         },
         {
             path: '/news',

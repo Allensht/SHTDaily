@@ -18,3 +18,59 @@
 .settingsButton:hover svg {
     transform: rotate(45deg);
 }
+
+.bg1 {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    --s: 100px;
+    /* control the size */
+    --c1: #f8b195;
+    --c2: #355c7d;
+    --_g: var(--c2) 4% 14%, var(--c1) 14% 24%, var(--c2) 22% 34%,
+        var(--c1) 34% 44%, var(--c2) 44% 56%, var(--c1) 56% 66%, var(--c2) 66% 76%,
+        var(--c1) 76% 86%, var(--c2) 86% 96%;
+    background: radial-gradient(100% 100% at 100% 0,
+            var(--c1) 4%,
+            var(--_g),
+            #0008 96%,
+            #0000),
+        radial-gradient(100% 100% at 0 100%,
+            #0000,
+            #0008 4%,
+            var(--_g),
+            var(--c1) 96%) var(--c1);
+    background-size: var(--s) var(--s);
+}
+
+
+
+.bg2 {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    --s: 60px;
+    --c1: #180a22;
+    --c2: #5b42f3;
+    --_g: radial-gradient(25% 25% at 25% 25%,
+            var(--c1) 99%,
+            rgba(0, 0, 0, 0) 101%);
+    background: var(--_g) var(--s) var(--s) / calc(2 * var(--s)) calc(2 * var(--s)),
+        var(--_g) 0 0 / calc(2 * var(--s)) calc(2 * var(--s)),
+        radial-gradient(50% 50%, var(--c2) 98%, rgba(0, 0, 0, 0)) 0 0 / var(--s) var(--s),
+        repeating-conic-gradient(var(--c2) 0 50%, var(--c1) 0 100%) calc(0.5 * var(--s)) 0 / calc(2 * var(--s)) var(--s);
+}
+
+.bg3 {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    --color: #a748f5;
+    background: linear-gradient(95deg, var(--color) 25%, transparent 25%) -50px 0,
+        linear-gradient(-15deg, var(--color) 25%, transparent 25%) -50px 0,
+        linear-gradient(25deg, transparent 75%, var(--color) 75%) -50px 0,
+        linear-gradient(-45deg, transparent 75%, var(--color) 75%) -50px 0,
+        linear-gradient(-15deg, transparent 75%, var(--color) 75%) -50px 0;
+    background-color: #b669fd;
+    background-size: 40px 40px;
+}
