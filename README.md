@@ -21,7 +21,7 @@
 
 - [使用指南](#使用指南)
 - [文件目录说明](#文件目录说明)
-- [使用到的框架/库](#使用到的框架/库)
+- [使用到的框架](#使用到的框架)
 - [贡献者](#贡献者)
   - [如何参与开源项目](#如何参与开源项目)
 - [版本控制](#版本控制)
@@ -109,23 +109,23 @@ SHTDaily-PC
 ```
 
 
-### 使用到的框架/库
+### 使用到的框架
 
 <img src="src/assets/dependencies.png" alt="Logo" width="100%" height="100%">
 
 ### 贡献者
 
-期待你的加入！
+暂无，期待你的加入！
 
 #### 如何参与开源项目
 
 贡献使开源社区成为一个学习、激励和创造的绝佳场所。你所作的任何贡献都是**非常感谢**的。
 
 1. Fork本项目
-2. 创建你的Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. 提交你的改变 (`git commit -m 'Add some AmazingFeature'`)
-4. Push到你的Feature Branch (`git push origin feature/AmazingFeature`)
-5. Open你的Pull Request
+2. 创建你的功能分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交你的更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到你的功能分支 (`git push origin feature/AmazingFeature`)
+5. 提交你的拉取请求
 
 ### 版本控制
 
