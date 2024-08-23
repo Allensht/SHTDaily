@@ -138,6 +138,7 @@ SHTDaily-PC
 #### 如何参与开源项目
 
 贡献使开源社区成为一个学习、激励和创造的绝佳场所。我们对你所作的任何贡献都是**非常感谢**的。
+[贡献指南](https://github.com/Allensht/SHTDaily/discussions/2)
 
 1. Fork本项目
 2. 创建你的功能分支 (`git checkout -b feature/AmazingFeature`)
