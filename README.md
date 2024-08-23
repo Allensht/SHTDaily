@@ -34,13 +34,13 @@
 
 ### 预览
 
-<img src="src/assets/preview.gif" alt="Logo" width="100%" height="100%">
+<img src="src/assets/homePage.gif" alt="Logo" width="100%" height="100%">
 
 ### 使用指南
 
 1. 克隆本项目
 2. 安装项目依赖
-3. 开发: 运行项目 or 使用: 打包项目
+3. 启动项目 或者 打包项目
 
 <img src="src/assets/toUse.png" alt="Logo" width="100%" height="100%">
 
@@ -128,7 +128,7 @@ SHTDaily-PC
 
 #### 如何参与开源项目
 
-贡献使开源社区成为一个学习、激励和创造的绝佳场所。你所作的任何贡献都是**非常感谢**的。
+贡献使开源社区成为一个学习、激励和创造的绝佳场所。我们对你所作的任何贡献都是**非常感谢**的。
 
 1. Fork本项目
 2. 创建你的功能分支 (`git checkout -b feature/AmazingFeature`)
@@ -148,7 +148,7 @@ allensht@outlook.com
 
 ### 讨论
 
-QQ群: XXXXXX
+你可以在Discussions中参与讨论或者加入我们的QQ群: 907930151
 
 ### 版权说明
 
@@ -156,4 +156,4 @@ QQ群: XXXXXX
 
 ### 赞助
 
-参与本项目的赞助或向您周围的人介绍本项目就是对作者最大的赞助！
+参与本项目的赞助或向您周围的人介绍本项目就是对我们最大的赞助！
