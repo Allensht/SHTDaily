@@ -47,77 +47,7 @@
 
 ### 文件目录说明
 
-```
-SHTDaily-PC
-├─ .npmrc // 指定了淘宝镜像源，可忽略
-├─ package.json
-├─ tsconfig.json
-├─ typings.d.ts
-├─ src // 项目主要部分
-│  ├─ pages
-│  │  ├─ settings
-│  │  │  ├─ index.less
-│  │  │  ├─ index.tsx
-│  │  │  └─ mod
-│  │  │     ├─ themeTool
-│  │  │     │  ├─ index.less
-│  │  │     │  └─ index.tsx
-│  │  │     └─ languageTool
-│  │  │        └─ index.tsx
-│  │  ├─ news
-│  │  │  └─ index.tsx
-│  │  ├─ hot
-│  │  │  ├─ toutiao.tsx
-│  │  │  ├─ weibo.tsx
-│  │  │  └─ zhihu.tsx
-│  │  ├─ home
-│  │  │  ├─ index.less
-│  │  │  └─ index.tsx
-│  │  └─ custom
-│  │     ├─ shareTool
-│  │     │  └─ index.tsx
-│  │     ├─ reload
-│  │     │  ├─ index.less
-│  │     │  └─ index.tsx
-│  │     └─ newsList
-│  │        └─ index.tsx
-│  ├─ locales // 多语言
-│  │  ├─ en-US.json
-│  │  └─ zh-CN.json
-│  ├─ layouts // 布局目录
-│  │  ├─ index.less
-│  │  ├─ index.tsx
-│  │  ├─ pageConfig.tsx
-│  │  └─ custom
-│  │     └─ burger
-│  │        ├─ index.less
-│  │        └─ index.tsx
-│  └─ assets // 资源目录
-│     ├─ avatar.tsx
-│     ├─ homePage.gif
-│     ├─ logo.png
-│     └─ toutiao.svg
-├─ main // electron入口目录
-│  ├─ index.js
-│  └─ preload.js
-└─ icons // 项目图标，打包会用到
-   ├─ win
-   │  └─ icon.ico
-   ├─ png
-   │  ├─ 1024x1024.png
-   │  ├─ 128x128.png
-   │  ├─ 16x16.png
-   │  ├─ 24x24.png
-   │  ├─ 256x256.png
-   │  ├─ 32x32.png
-   │  ├─ 48x48.png
-   │  ├─ 512x512.png
-   │  └─ 64x64.png
-   └─ mac
-      └─ icon.icns
-
-```
-
+<img src="src/assets/fileTree.png" alt="Logo" width="100%" height="100%">
 
 ### 使用到的
 
