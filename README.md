@@ -42,7 +42,7 @@
 
 1. 克隆本项目
 2. 安装项目依赖
-3. 启动项目 或者 打包项目
+3. 启动项目 或者 打包项目 或者 前往[Releases](https://github.com/Allensht/SHTDaily/releases/tag/0.3.5%E7%89%88%E6%9C%AC)
 
 <img src="src/assets/toUse.png" alt="Logo" width="100%" height="100%">
 
