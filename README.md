@@ -88,7 +88,7 @@ allensht@outlook.com
 
 ### 讨论
 
-你可以在Discussions中参与讨论或者加入我们的QQ群: 907930151
+你可以在[Discussions](https://github.com/Allensht/SHTDaily/discussions/)中参与讨论或者加入我们的QQ群: 907930151
 
 ### 版权说明
 
