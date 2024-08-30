@@ -35,9 +35,9 @@ export default () => {
   }, [enUS])
   useEffect(() => {
     if (window.electron && typeof window.electron.darktheme === "function") {
-        window.electron.darktheme(darktheme ? "dark" : "light")
+      window.electron.darktheme(darktheme ? "dark" : "light")
     } else {
-        console.warn("Electron not detected or darktheme function not available.")
+      console.warn("Electron not detected or darktheme function not available.")
     }
   }, [darktheme])
   const config: ThemeConfig = {
