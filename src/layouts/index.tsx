@@ -21,7 +21,11 @@ export default () => {
     setLocale(enUS ? 'en-US' : 'zh-CN', false)
   }, [enUS])
   useEffect(() => {
-    window.electron.darkTheme(darktheme ? "dark" : "light")
+    if (window.electron && typeof window.electron.darktheme === "function") {
+        window.electron.darktheme(darktheme ? "dark" : "light")
+    } else {
+        console.warn("Electron not detected or darktheme function not available.")
+    }
   }, [darktheme])
   const config: ThemeConfig = {
     cssVar: true,
