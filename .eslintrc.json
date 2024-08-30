@@ -14,7 +14,7 @@
     },
     "plugins": ["react", "@typescript-eslint"],
     "rules": {
-        "semi": ["error", "always"],
+        "semi": ["error", "never"],
         "react/react-in-jsx-scope": "off"
     },
     "settings": {
